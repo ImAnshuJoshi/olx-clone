@@ -32,17 +32,9 @@ npm start
 The server is now up and running......
 
 Now open new terminal window in the root directory.
-Jump to the frontend folder created or run the following command.
+And jump to the frontend folder.
 ```
 cd ./olx-clone/frontend
-```
-Now clone the frontend branch.
-```
-git clone -b frontend https://github.com/ImAnshuJoshi/olx-clone.git
-```
-Go to the frontend folder that needs to be interacted.
-```
-cd ./frontend/olx-clone
 ```
 Install the dependencies
 ```
