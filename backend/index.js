@@ -44,6 +44,9 @@ app.use(function (req, res, next) {
 app.use("/api/auth", authRoute);
 app.use("/api/item", itemRoute);
 app.use("/api/users", userRoute);
+app.use("/", (req, res) => {
+  res.send("Hello World");
+});
 
 app.listen(port, () => {
   connect();
