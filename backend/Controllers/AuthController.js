@@ -1,6 +1,4 @@
-//openssl rand -base64 32
 import User from "../models/user.js";
-// import { createError } from "../utils/error.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
