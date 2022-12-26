@@ -7,6 +7,7 @@ import swal from "sweetalert2";
 import "./Login.css";
 import olxlogo from "../../assets/olx-logo.png";
 import landingLogo from "../../assets/landing-logo.png";
+import ReactLoading from "react-loading";
 
 function Login() {
   let [username, setUsername] = useState("");
@@ -15,6 +16,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    <ReactLoading type="String" color="#ffffff" height={667} width={375} />;
     console.log(username, password);
     const credentials = {
       username,

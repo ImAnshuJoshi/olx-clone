@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import olxlogo from "../../assets/olx-logo.png";
 import landingLogo from "../../assets/landing-logo.png";
+import ReactLoading from "react-loading";
 
 function Register() {
   const validatePassword = (str) => {
@@ -23,6 +24,7 @@ function Register() {
 
   const handleClick = async (e) => {
     e.preventDefault();
+    <ReactLoading type="String" color="#ffffff" height={667} width={375} />;
     console.log(username, name, password);
     const credentials = {
       username,
