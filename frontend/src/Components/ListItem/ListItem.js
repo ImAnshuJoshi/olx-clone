@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./ListItem.css";
 import jwt_decode from "jwt-decode";
+import Spinner from "react-bootstrap/Spinner";
 
 function Register() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ function Register() {
   let [desc, setDesc] = useState("");
   let [price, setPrice] = useState(0);
   let [img, setImg] = useState("");
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState([]);
   useEffect(() => {
     const token = localStorage.getItem("olx-token");
@@ -28,6 +30,7 @@ function Register() {
 
   const submitItem = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       if (!name || !desc || !price || !img) {
         Swal.fire({
@@ -61,6 +64,7 @@ function Register() {
           text: "Something went wrong",
         });
       }
+      setLoading(false);
     } catch (err) {
       console.log(err);
       alert(err.message);
@@ -69,6 +73,9 @@ function Register() {
 
   return (
     <div className="list-parent">
+      <div className="spinner">
+        {loading ? <Spinner animation="border" role="status" /> : <></>}
+      </div>
       <Form className="list-form">
         <Form.Group
           className="mb-3"

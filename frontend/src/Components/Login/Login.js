@@ -7,16 +7,17 @@ import swal from "sweetalert2";
 import "./Login.css";
 import olxlogo from "../../assets/olx-logo.png";
 import landingLogo from "../../assets/landing-logo.png";
-import ReactLoading from "react-loading";
+import Spinner from "react-bootstrap/Spinner";
 
 function Login() {
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    <ReactLoading type="String" color="#ffffff" height={667} width={375} />;
+    setLoading(true);
     console.log(username, password);
     const credentials = {
       username,
@@ -44,6 +45,7 @@ function Login() {
           showConfirmButton: false,
           timer: 1500,
         });
+        setLoading(false);
       }
     } catch (err) {
       swal.fire({
@@ -55,6 +57,9 @@ function Login() {
   };
   return (
     <div className="login-parent">
+      <div className="spinner">
+        {loading ? <Spinner animation="border" role="status" /> : <></>}
+      </div>
       <div className="olx-logo">
         <img src={olxlogo} />
       </div>

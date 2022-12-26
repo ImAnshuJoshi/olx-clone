@@ -8,6 +8,7 @@ import axios from "axios";
 import olxlogo from "../../assets/olx-logo.png";
 import landingLogo from "../../assets/landing-logo.png";
 import ReactLoading from "react-loading";
+import Spinner from "react-bootstrap/Spinner";
 
 function Register() {
   const validatePassword = (str) => {
@@ -19,12 +20,13 @@ function Register() {
   let [name, setName] = useState("");
   let [password, setPassword] = useState("");
   let [repassword, setRePassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleClick = async (e) => {
     e.preventDefault();
-    <ReactLoading type="String" color="#ffffff" height={667} width={375} />;
+    setLoading(true);
     console.log(username, name, password);
     const credentials = {
       username,
@@ -66,6 +68,7 @@ function Register() {
             timer: 1500,
           });
         }
+        setLoading(false);
       } catch (err) {
         swal.fire({
           icon: "error",
@@ -77,6 +80,9 @@ function Register() {
   };
   return (
     <div className="login-parent">
+      <div className="spinner">
+        {loading ? <Spinner animation="border" role="status" /> : <></>}
+      </div>
       <div className="olx-logo">
         <img src={olxlogo} />
       </div>

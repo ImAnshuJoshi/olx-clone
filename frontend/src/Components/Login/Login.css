@@ -38,6 +38,12 @@
     border-bottom: 2px solid #bebebe;
 
 }
+.spinner{
+    position:absolute;
+    top:50%;
+    left:50%;
+    
+}
 @media screen and (max-width: 700px){
     .login-parent{
         flex-direction: column;
