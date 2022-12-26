@@ -7,13 +7,13 @@ In the terminal , run the following command.
 ```
 git clone https://github.com/ImAnshuJoshi/olx-clone.git
 ```
-Now go to the root directory of the backend folder or run the following command.
+Now go to the root directory or the backend folder or run the following command.
 ```
 cd ./olx-clone/backend
 ```
 Install the dependencies
 ```
-npm Install
+npm install
 ```
 Make a .env file in the root of backend folder.
 ```
