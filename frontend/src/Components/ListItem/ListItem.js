@@ -33,41 +33,48 @@ function Register() {
     setLoading(true);
     try {
       if (!name || !desc || !price || !img) {
+        setLoading(false);
         Swal.fire({
           icon: "error",
           title: "Empty Field(s).",
           text: "Please fill all fields!",
         });
-      }
-      const form = new FormData();
-      form.append("name", name);
-      form.append("description", desc);
-      form.append("price", price);
-      form.append("image", img);
-      form.append("userId", user._id);
-      const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/item/addItem`,
-        {
-          method: "POST",
-          headers: {
-            "Access-Control-Allow-Origin": true,
-          },
-          body: form,
-        }
-      );
-      if (res.status === 200) {
-        navigate("/home");
       } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong",
-        });
+        const form = new FormData();
+        form.append("name", name);
+        form.append("description", desc);
+        form.append("price", price);
+        form.append("image", img);
+        form.append("userId", user._id);
+        const res = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/item/addItem`,
+          {
+            method: "POST",
+            headers: {
+              "Access-Control-Allow-Origin": true,
+            },
+            body: form,
+          }
+        );
+        if (res.status === 200) {
+          navigate("/home");
+        } else {
+          setLoading(false);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Make sure there are no commas in price , Only numbers",
+          });
+        }
       }
       setLoading(false);
     } catch (err) {
-      console.log(err);
-      alert(err.message);
+      setLoading(false);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong",
+      });
     }
   };
 

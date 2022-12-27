@@ -24,6 +24,7 @@ function Login() {
       password,
     };
     if (!username || !password) {
+      setLoading(false);
       swal.fire({
         icon: "error",
         title: "Empty Field(s).",
@@ -48,6 +49,7 @@ function Login() {
         setLoading(false);
       }
     } catch (err) {
+      setLoading(false);
       swal.fire({
         icon: "error",
         title: "Oops...",

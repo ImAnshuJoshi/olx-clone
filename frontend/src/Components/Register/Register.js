@@ -34,18 +34,21 @@ function Register() {
       password,
     };
     if (!username || !name || !password) {
+      setLoading(false);
       swal.fire({
         icon: "error",
         title: "Empty Field(s).",
         text: "Please fill all fields!",
       });
     } else if (!validatePassword(password)) {
+      setLoading(false);
       swal.fire({
         icon: "error",
         title: "Invalid Password...",
         text: "Password should be longer than 4 characters and must contain atleast 1 Uppercase,1 Lowercase, 1 Number and 1 special character",
       });
     } else if (password !== repassword) {
+      setLoading(false);
       swal.fire({
         icon: "error",
         title: "Oops...",
@@ -70,6 +73,7 @@ function Register() {
         }
         setLoading(false);
       } catch (err) {
+        setLoading(false);
         swal.fire({
           icon: "error",
           title: "Oops...",
